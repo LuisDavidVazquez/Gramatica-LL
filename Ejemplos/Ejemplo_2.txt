@@ -1,0 +1,5 @@
+Siinter(x > 0) {
+    Mientinter(x > 0) {
+        x = x - 1:3
+    }
+}

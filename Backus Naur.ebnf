@@ -1,0 +1,89 @@
+<Programa>     ::= <START> <CODE> <FINISH>
+<START>        ::= "= ^ ."
+<FINISH>       ::= ". ^ ="
+
+<CODE>         ::= { <Statement> }
+<Statement>    ::= <Method> 
+                | <VarDec> 
+                | <Print> 
+                | <Conditions> 
+                | <Loops> 
+                | <ExpressionStatement> 
+                | <Return>
+                | <Break>
+                | <Continue>
+                | <Array_Dec>
+                | <Input>
+                | <Comment>
+
+<ExpressionStatement> ::= (<MethodCall> | <Assignment>) <END>
+<Assignment>   ::= <VAR_ID> "=" <Expresion>
+
+<Method>       ::= "Methodinter" <METHOD_ID> "(" [ <Method_Params> ] ")" "{" <CODE> "}"
+<METHOD_ID>    ::= [A-Z] { [a-zA-Z0-9_] }
+<Method_Params> ::= <type> <VAR_ID> { "," <type> <VAR_ID> }
+
+<type>         ::= "INTer" | "FLOATer" | "STRINGter" | "BOOLEANter" | "VOIDter"
+
+<VarDec>       ::= "DECVARinter" <VarAsignation> "EndDecinter"
+<VarAsignation> ::= <VAR_ID> { "," <VAR_ID> } ":" <type>
+
+<VAR_ID>       ::= [a-zA-Z_] { [a-zA-Z0-9_] }
+
+<Print>        ::= "Mostrinter" "(" <Printable> ")" <END>
+<Printable>    ::= <STRING> | <VAR_ID> | <NUMBER> | <Expresion>
+
+<STRING>       ::= "\"" { [A-Za-z0-9_ ] } "\""
+
+<Conditions>   ::= "Siinter" "(" <Condition> ")" "{" <CODE> "}" [ "Sinointer" "{" <CODE> "}" ]
+
+// Mejora en expresiones lógicas
+<Condition>    ::= <LogicalOR>
+<LogicalOR>    ::= <LogicalAND> { "ORter" <LogicalAND> }
+<LogicalAND>   ::= <LogicalNOT> { "ANDter" <LogicalNOT> }
+<LogicalNOT>   ::= "NOTter" <LogicalNOT> | <RelationalExpr>
+<RelationalExpr> ::= <Expresion> <OP_REL> <Expresion>
+<OP_REL>       ::= "==" | "!=" | ">" | "<" | ">=" | "<="
+
+<Loops>        ::= <While_Loop> | <For_Loop>
+<While_Loop>   ::= "Mientinter" "(" <Condition> ")" "{" <CODE> "}"
+<For_Loop>     ::= "Forinter" "(" <VarAsignation> ";" <Condition> ";" <Expresion> ")" "{" <CODE> "}"
+
+// Mejora en llamadas a métodos
+<MethodCall>   ::= <METHOD_ID> "(" <ArgumentList> ")" 
+<ArgumentList> ::= [ <Expresion> { "," <Expresion> } ]
+
+// Mejora en expresiones aritméticas
+<Expresion>    ::= <Term> { <OP_ADD> <Term> }
+<Term>         ::= <UnaryExpr> { <OP_MUL> <UnaryExpr> }
+<UnaryExpr>    ::= ["-"] <Factor>
+<Factor>       ::= <Primary> | "(" <Expresion> ")"
+<Primary>      ::= <VAR_ID> 
+                | <NUMBER> 
+                | <BOOLEAN> 
+                | <MethodCall> 
+                | <Array_Access>
+
+<OP_ADD>       ::= "+" | "-"
+<OP_MUL>       ::= "*" | "/"
+
+<NUMBER>       ::= <INTEGER> | <FLOAT>
+<INTEGER>      ::= [0-9]+
+<FLOAT>        ::= [0-9]+ "." [0-9]+
+
+<Return>       ::= "Returninter" <Expresion> <END>
+
+<END>          ::= ":3"
+
+<BOOLEAN>      ::= "TRUEter" | "FALSEter"
+
+<Array_Dec>    ::= "ARRAYinter" <VAR_ID> "[" <INTEGER> "]" ":" <type> <END>
+<Array_Access> ::= <VAR_ID> "[" <Expresion> "]"
+
+<Input>        ::= "LEERinter" "(" <VAR_ID> ")" <END>
+
+<Comment>      ::= "##" { [^\n] } "\n"
+
+<Break>        ::= "BREAKinter" <END>
+<Continue>     ::= "CONTINUEinter" <END>
+

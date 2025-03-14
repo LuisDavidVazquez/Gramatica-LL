@@ -1,0 +1,6 @@
+Methodinter Factorial(INTer n) {
+    Siinter(n == 0) {
+        Returninter 1:3
+    }
+    Returninter n * Factorial(n - 1):3
+}

@@ -1,0 +1,81 @@
+Programa → START CODE FINISH
+START → "= ^ ."
+FINISH → ". ^ ="
+CODE → Statement CODE | ε
+
+Statement → VarDec | Print | ExpressionStatement | Method | 
+           Conditions | Loops | Array_Dec | Input | Comment | 
+           Break | Continue | Return
+
+# Declaraciones y Variables
+VarDec → "DECVARinter" VarList "EndDecinter"
+VarList → VarDecItem RestVarList
+VarDecItem → ID ":" TYPE
+RestVarList → "," VarDecItem RestVarList | ε
+
+# Expresiones
+ExpressionStatement → ID ExpressionStatementTail
+ExpressionStatementTail → "=" Expresion ":3" | "[" Expresion "]" "=" Expresion ":3"
+Expresion → Factor ExprTail
+ExprTail → OP_ARIT Factor ExprTail | OP_REL Factor ExprTail | OP_LOG Factor ExprTail | ε
+Factor → ID | NUMBER | BOOLEAN | "(" Expresion ")" | OP_LOG Factor
+
+# Condiciones y Operadores
+Condition → Expresion
+LogicalExpr → Expresion LogicalOp Expresion LogicalTail
+LogicalOp → "ANDter" | "ORter" | "NOTter"
+LogicalTail → LogicalOp LogicalExpr | ε
+
+# Estructuras de Control
+Conditions → "Siinter" "(" Condition ")" Block OptionalElse
+Block → "{" CODE "}"
+OptionalElse → "Sinointer" Block | ε
+
+# Bucles
+Loops → "Mientinter" "(" Condition ")" Block | 
+       "Forinter" "(" ForInit ";" Condition ";" ExpressionStatement ")" Block
+ForInit → VarDec | ExpressionStatement
+
+# Métodos
+Method → "Methodinter" ID "(" ParamList ")" Block
+ParamList → ParamItem RestParams | ε
+ParamItem → TYPE ID
+RestParams → "," ParamItem RestParams | ε
+MethodCall → ID "(" ArgumentList ")"
+ArgumentList → Expresion RestArgList | ε
+RestArgList → "," Expresion RestArgList | ε
+
+# Arrays
+Array_Dec → "ARRAYinter" ID "[" ArraySize "]" ":" TYPE ":3"
+ArraySize → NUMBER | ID
+ArrayAccess → ID "[" Expresion "]"
+
+# Entrada/Salida
+Print → "Mostrinter" "(" Printable ")" ":3"
+Printable → STRING | Expresion
+Input → "LEERinter" "(" ID ")" ":3"
+
+# Control de Flujo
+Break → "BREAKinter" ":3"
+Continue → "CONTINUEinter" ":3"
+Return → "Returninter" Expresion ":3"
+
+# Comentarios
+Comment → "##" {ANY_CHAR} "\n"
+
+# Tipos y Valores
+TYPE → "INTer" | "FLOATer" | "STRINGter" | "BOOLEANter" | "VOIDter"
+BOOLEAN → "TRUEter" | "FALSEter"
+NUMBER → DIGIT+ ("." DIGIT+)?
+ID → LETTER (LETTER | DIGIT)*
+STRING → '"' {ANY_CHAR} '"'
+
+# Operadores
+OP_ARIT → "+" | "-" | "*" | "/"
+OP_REL → "==" | "!=" | ">" | "<" | ">=" | "<="
+OP_LOG → "ANDter" | "ORter" | "NOTter"
+
+# Caracteres Básicos
+LETTER → [a-zA-Z_]
+DIGIT → [0-9]
+ANY_CHAR → [^\n]

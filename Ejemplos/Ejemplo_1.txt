@@ -1,0 +1,5 @@
+DECVARinter
+    x: INTer,
+    y: FLOATer
+EndDecinter
+x = 5 + 3 * 2:3

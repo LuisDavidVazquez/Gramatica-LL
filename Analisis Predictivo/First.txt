@@ -1,0 +1,76 @@
+FIRST(<Programa>) = {"= ^ ."}
+FIRST(<START>) = {"= ^ ."}
+FIRST(<FINISH>) = {". ^ ="}
+FIRST(<CODE>) = {
+    "DECVARinter", 
+    "Mostrinter", 
+    VAR_ID, 
+    "Siinter", 
+    "Mientinter", 
+    "Forinter", 
+    "Methodinter",
+    "ARRAYinter",
+    "LEERinter",
+    "##",
+    "BREAKinter",
+    "CONTINUEinter",
+    "Returninter",
+    ε
+}
+FIRST(<Statement>) = {
+    "DECVARinter", 
+    "Mostrinter", 
+    VAR_ID, 
+    "Siinter", 
+    "Mientinter", 
+    "Forinter", 
+    "Methodinter",
+    "ARRAYinter",
+    "LEERinter",
+    "##",
+    "BREAKinter",
+    "CONTINUEinter",
+    "Returninter"
+}
+FIRST(<VarDec>) = {"DECVARinter"}
+FIRST(<VarAsignation>) = {VAR_ID}
+FIRST(<Print>) = {"Mostrinter"}
+FIRST(<Printable>) = {STRING, VAR_ID, NUMBER}
+FIRST(<ExpressionStatement>) = {VAR_ID}
+FIRST(<Assignment>) = {VAR_ID}
+FIRST(<type>) = {
+    "INTer",
+    "FLOATer",
+    "STRINGter",
+    "BOOLEANter",
+    "VOIDter"
+}
+FIRST(<Conditions>) = {"Siinter"}
+FIRST(<Loops>) = {"Mientinter", "Forinter"}
+FIRST(<Method>) = {"Methodinter"}
+FIRST(<Condition>) = {VAR_ID, NUMBER, "(", "NOTter"}
+FIRST(<LogicalOR>) = {VAR_ID, NUMBER, "(", "NOTter"}
+FIRST(<LogicalAND>) = {VAR_ID, NUMBER, "(", "NOTter"}
+FIRST(<LogicalNOT>) = {"NOTter", VAR_ID, NUMBER, "("}
+FIRST(<RelationalExpr>) = {VAR_ID, NUMBER, "("}
+FIRST(<Expresion>) = {VAR_ID, NUMBER, "(", "-"}
+FIRST(<Term>) = {VAR_ID, NUMBER, "(", "-"}
+FIRST(<Factor>) = {VAR_ID, NUMBER, "("}
+FIRST(<MethodCall>) = {METHOD_ID}
+FIRST(<Array_Dec>) = {"ARRAYinter"}
+FIRST(<Array_Access>) = {VAR_ID}
+FIRST(<Input>) = {"LEERinter"}
+FIRST(<Comment>) = {"##"}
+FIRST(<Break>) = {"BREAKinter"}
+FIRST(<Continue>) = {"CONTINUEinter"}
+FIRST(<Return>) = {"Returninter"}
+FIRST(<ArgumentList>) = {VAR_ID, NUMBER, "(", "-", ε}
+FIRST(<Primary>) = {
+    VAR_ID,
+    NUMBER,
+    BOOLEAN,
+    METHOD_ID,
+    "TRUEter",
+    "FALSEter"
+}
+FIRST(<BOOLEAN>) = {"TRUEter", "FALSEter"}

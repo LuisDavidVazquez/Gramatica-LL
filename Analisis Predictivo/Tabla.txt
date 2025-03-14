@@ -1,0 +1,33 @@
+| No Terminal | = ^ . | . ^ = | DECVARinter | Mostrinter | VAR_ID | Methodinter | Siinter | Mientinter | Forinter | ARRAYinter | LEERinter | ## | BREAKinter | CONTINUEinter | Returninter |
+|-------------|-------|--------|-------------|------------|---------|-------------|----------|------------|-----------|------------|-----------|----|-----------|--------------| ------------|
+| Programa    | START CODE FINISH | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| START       | "= ^ ." | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| FINISH      | - | ". ^ =" | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| CODE        | - | ε | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE | Statement CODE |
+| Statement   | VarDec | Print | ExpressionStatement | Method | Conditions | Loops | Loops | Array_Dec | Input | Comment | Break | Continue | Return |
+| VarDec      | "DECVARinter" VarAsignation "EndDecinter" | - | - | - | - | - | - | - | - | - | - | - | - |
+| VarAsignation| - | - | VAR_ID RestVarAsign | - | - | - | - | - | - | - | - | - | - |
+| Array_Dec   | - | - | - | - | - | - | - | "ARRAYinter" VAR_ID "[" INTEGER "]" ":" type ":3" | - | - | - | - | - |
+| Expresion   | Term ExprTail | Term ExprTail | Term ExprTail | Term ExprTail | - | - | - | - |
+| Term        | Factor TermTail | Factor TermTail | Factor TermTail | Factor TermTail | - | - | - | - |
+| Factor      | Primary | Primary | "(" Expresion ")" | - | - | - | - | - |
+| Primary     | VAR_ID | NUMBER | - | - | - | BOOLEAN | BOOLEAN | MethodCall |
+| ExpressionStatement | Assignment ":3" | - | - | - | - | - | - | - |
+| Assignment  | VAR_ID "=" Expresion | - | - | - | - | - | - | - |
+| Condition   | LogicalOR | LogicalOR | LogicalOR | LogicalOR | - | - | - |
+| LogicalOR   | LogicalAND LogicalORTail | LogicalAND LogicalORTail | LogicalAND LogicalORTail | LogicalAND LogicalORTail | - | - | - |
+| LogicalAND  | LogicalNOT LogicalANDTail | LogicalNOT LogicalANDTail | LogicalNOT LogicalANDTail | LogicalNOT LogicalANDTail | - | - | - |
+| LogicalNOT  | RelationalExpr | RelationalExpr | RelationalExpr | "NOTter" LogicalNOT | - | - | - |
+| LogicalORTail | - | - | - | - | "ORter" LogicalAND LogicalORTail | - | ε |
+| LogicalANDTail | - | - | - | - | ε | "ANDter" LogicalNOT LogicalANDTail | ε |
+| Conditions  | "Siinter" "(" Condition ")" "{" CODE "}" ["Sinointer" "{" CODE "}"] | - | - |
+| Loops       | - | "Mientinter" "(" Condition ")" "{" CODE "}" | "Forinter" "(" VarAsignation ";" Condition ";" Expresion ")" "{" CODE "}" |
+| Method      | "Methodinter" METHOD_ID "(" Method_Params ")" "{" CODE "}" | - | - | - | - | - |
+| MethodCall  | - | METHOD_ID "(" ArgumentList ")" | - | - | - | - |
+| ArgumentList | - | - | Expresion RestArgList | Expresion RestArgList | - | ε |
+| Print       | "Mostrinter" "(" Printable ")" ":3" | - | - | - | - | - |
+| Input       | - | "LEERinter" "(" VAR_ID ")" ":3" | - | - | - | - |
+| Comment     | - | - | "##" { [^\n] } "\n" | - | - | - |
+| Break       | - | - | - | "BREAKinter" ":3" | - | - |
+| Continue    | - | - | - | - | "CONTINUEinter" ":3" | - |
+| Return      | - | - | - | - | - | "Returninter" Expresion ":3" |

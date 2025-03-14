@@ -1,0 +1,34 @@
+FOLLOW(<Programa>) = {$}
+FOLLOW(<START>) = {"DECVARinter", "Mostrinter", VAR_ID}
+FOLLOW(<FINISH>) = {$}
+FOLLOW(<CODE>) = {". ^ ="}
+FOLLOW(<Statement>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<VarDec>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<VarAsignation>) = {"EndDecinter"}
+FOLLOW(<Print>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Printable>) = {")"}
+FOLLOW(<ExpressionStatement>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Assignment>) = {":3"}
+FOLLOW(<type>) = {"EndDecinter", "DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Conditions>) = {"DECVARinter", "Mostrinter", VAR_ID, "Siinter", "Mientinter", "Forinter", "Methodinter", ". ^ ="}
+FOLLOW(<Loops>) = {igual que FOLLOW(<Conditions>)}
+FOLLOW(<Method>) = {igual que FOLLOW(<Conditions>)}
+FOLLOW(<Condition>) = {")", "{"}
+FOLLOW(<LogicalOR>) = {")", "{"}
+FOLLOW(<LogicalAND>) = {"ORter", ")", "{"}
+FOLLOW(<LogicalNOT>) = {"ANDter", "ORter", ")", "{"}
+FOLLOW(<RelationalExpr>) = {"ANDter", "ORter", ")", "{"}
+FOLLOW(<Expresion>) = {"==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
+FOLLOW(<Term>) = {"+", "-", "==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
+FOLLOW(<Factor>) = {"*", "/", "+", "-", "==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
+FOLLOW(<Array_Dec>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Array_Access>) = {"=", "+", "-", "*", "/", "==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
+FOLLOW(<Input>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Comment>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Break>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Continue>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<Return>) = {"DECVARinter", "Mostrinter", VAR_ID, ". ^ ="}
+FOLLOW(<MethodCall>) = {"+", "-", "*", "/", "==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
+FOLLOW(<ArgumentList>) = {")"}
+FOLLOW(<Primary>) = {"*", "/", "+", "-", "==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
+FOLLOW(<BOOLEAN>) = {"*", "/", "+", "-", "==", "!=", ">", "<", ">=", "<=", ")", ":3", ","}
