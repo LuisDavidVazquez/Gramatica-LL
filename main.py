@@ -190,6 +190,7 @@ class Parser:
         table['Expresion'] = {
             'ID': ['Factor', 'ExprTail'],
             'NUMBER': ['Factor', 'ExprTail'],
+            'STRING': ['Factor', 'ExprTail'],
             'LPAREN': ['Factor', 'ExprTail'],
             'BOOLEAN': ['Factor', 'ExprTail'],
             'OP_LOG': ['Factor', 'ExprTail']
@@ -209,6 +210,7 @@ class Parser:
             'ID': ['ID'],
             'NUMBER': ['NUMBER'],
             'BOOLEAN': ['BOOLEAN'],
+            'STRING': ['STRING'],
             'LPAREN': ['LPAREN', 'Expresion', 'RPAREN'],
             'OP_LOG': ['OP_LOG', 'Factor']
         }
